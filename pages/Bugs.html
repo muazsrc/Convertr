@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Bugs - Convertr</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzhhNWNmNiI+PHBhdGggZD0iTTIgMTJjMC01LjUyIDQuNDgtMTAgMTAtMTBzMTAgNC40OCAxMCAxMGgtMS41YzAtNC42OS0zLjgxLTguNS04LjUtOC41UzMuNSA3LjMxIDMuNSAxMkg3bC01IDVsLTUtNUgyem0yMCAwYzAgNS41Mi00LjQ4IDEwLTEwIDEwUzIgMTcuNTIgMiAxMmgxLjVjMCA0LjY5IDMuODEgOC41IDguNSA4LjVzOC41LTMuODEgOC41LTguNWgtMy41bDUgNWw1LTVoLTMuNXoiLz48L3N2Zz4=">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../styles/bugs.css">
+    <link rel="stylesheet" href="../styles/navbar.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="../index.html" class="logo">
+            <span>Convertr</span>
+        </a>
+        <button class="mobile-menu-toggle">☰</button>
+        <div class="nav-links">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="features.html" class="nav-link">Features</a>
+            <a href="Bugs.html" class="nav-link">Contact</a>
+            <a href="https://muaz.is-a.dev" class="nav-link muazweb" target="_blank">My Portfolio</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="bug-report-card">
+            <div class="card-header">
+                <h1>Report a Bug</h1>
+                <p>Found an issue? Let us know so we can fix it!</p>
+            </div>
+
+            <div class="bug-report-form">
+                <form id="bugReportForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Brief description of the issue" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Bug Description</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Please describe the bug in detail. Include steps to reproduce, expected behavior, and actual behavior." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="browser">Browser & Version</label>
+                        <input type="text" id="browser" name="browser" placeholder="e.g., Chrome 96.0.4664.110" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="device">Device & OS</label>
+                        <input type="text" id="device" name="device" placeholder="e.g., iPhone 13, iOS 15.1" required>
+                    </div>
+                    
+                    <div class="form-submit-container">
+                        <button type="submit" class="submit-button">
+                            <span class="button-icon">📤</span>
+                            <span>Submit Bug Report</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="contact-section">
+                <h2>Other Ways to Reach me</h2>
+                
+                <div class="contact-widgets">
+                    <div class="widget-container">
+                        <h3>Contact my Discord</h3>
+                        <div class="discord-widget">
+                            <img src="https://discord.c99.nl/widget/theme-2/914088633898762262.png" alt="Discord Widget">
+                        </div>
+                    </div>
+                    
+                    <div class="widget-container">
+                        <h3>Follow me on Instagram</h3>
+                        <div class="instagram-widget">
+                            <iframe src="https://www.instagram.com/p/C3YqXZoL5YQ/embed" width="100%" height="450" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">Toast message here</div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Muaz's Image Convertr. All rights reserved.</p>
+    </footer>
+
+    <!-- Initialize EmailJS -->
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("i_N6UFoPvxudDi8mk");
+        })();
+    </script>
+
+    <!-- Load the bugs.js script after EmailJS initialization -->
+    <script src="../scripts/bugs.js"></script>
+</body>
+</html>

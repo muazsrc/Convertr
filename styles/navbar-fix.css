@@ -1,0 +1,80 @@
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1a1a1a;
+    padding: 1rem 2rem;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.navbar-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    color: #007bff;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .navbar-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #1a1a1a;
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+}
+
+/* Adjust main content to account for fixed navbar */
+main {
+    margin-top: 80px;
+} 

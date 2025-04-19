@@ -1,0 +1,140 @@
+/* Navbar Styles */
+.navbar {
+    background-color: rgba(26, 22, 37, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logo:hover {
+    color: var(--text);
+}
+
+.logo:hover .logo-icon {
+    transform: rotate(180deg);
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.6s cubic-bezier(0.45, 0, 0.55, 1);
+    color: var(--primary);
+}
+
+.logo span {
+    background: linear-gradient(to right, var(--text), var(--primary-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-light);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.muazweb {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link.muazweb:hover {
+    color: var(--primary-light);
+}
+
+/* Mobile menu toggle */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--card);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 0.5rem 0;
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+    }
+} 

@@ -1,0 +1,663 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap');
+
+:root {
+    --primary: #8a5cf6;
+    --primary-hover: #6d28d9;
+    --primary-light: #a78bfa;
+    --primary-dark: #6d28d9;
+    --primary-glow: rgba(138, 92, 246, 0.3);
+    --secondary: #e879f9;
+    --background: #0f0c1d;
+    --card: #1a1625;
+    --text: #ffffff;
+    --subtext: #9ca3af;
+    --success: #10b981;
+    --error: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #0f0c1d, #121212);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+}
+
+/* Main Content Styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    flex: 1;
+    width: 95%;
+}
+
+.converter-card {
+    background-color: var(--card);
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(138, 92, 246, 0.1);
+    padding: 2rem;
+    margin-top: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.card-header h1 {
+    color: var(--text);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-header p {
+    color: var(--subtext);
+    opacity: 0.8;
+}
+
+.upload-area {
+    border: 2px dashed var(--primary);
+    border-radius: 1rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(138, 92, 246, 0.05);
+}
+
+.upload-area:hover {
+    background-color: rgba(138, 92, 246, 0.1);
+}
+
+.upload-area.active {
+    border-color: var(--success);
+    background-color: rgba(16, 185, 129, 0.05);
+}
+
+.upload-icon {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.upload-area:hover .upload-icon {
+    transform: scale(1.1);
+}
+
+.upload-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.upload-subtext {
+    font-size: 0.875rem;
+    color: var(--subtext);
+    opacity: 0.8;
+}
+
+.conversion-options {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.conversion-options.active {
+    opacity: 1;
+    height: auto;
+}
+
+.option-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.option-label {
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.select-trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: var(--card);
+    border: 1px solid rgba(138, 92, 246, 0.2);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    color: var(--text);
+}
+
+.select-trigger:hover {
+    border-color: var(--primary);
+}
+
+.select-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--card);
+    border: 1px solid rgba(138, 92, 246, 0.2);
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.select-options.active {
+    display: block !important;
+}
+
+.select-option {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.select-option:hover {
+    background-color: rgba(138, 92, 246, 0.1);
+}
+
+.image-preview {
+    margin-top: 2rem;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    animation: fadeIn 0.5s ease;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.image-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.detail-item {
+    background-color: rgba(138, 92, 246, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text);
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary);
+    color: var(--text);
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 2rem;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    box-shadow: 0 4px 15px var(--primary-glow);
+}
+
+.button.active {
+    opacity: 1;
+    height: auto;
+    overflow: visible;
+}
+
+.button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--primary-glow);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+.button-icon {
+    font-size: 1.25rem;
+    /* background: var(--secondary); */
+}
+
+.completed-area {
+    margin-top: 2rem;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    animation: fadeIn 0.5s ease;
+    text-align: center;
+}
+
+.completed-area.active {
+    display: flex;
+}
+
+.completed-icon {
+    font-size: 3rem;
+    color: var(--success);
+    animation: pulse 2s infinite;
+}
+
+.completed-message {
+    color: var(--text);
+    opacity: 0.8;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+    opacity: 1;
+}
+
+.button-group .button {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    opacity: 1;
+    height: auto;
+}
+
+.download-button-text {
+    text-align: center;
+    color: white;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.download-button {
+    background-color: var(--secondary);
+    box-shadow: 0 4px 15px rgba(232, 121, 249, 0.3);
+}
+
+.download-button:hover {
+    background-color: #d946ef;
+    box-shadow: 0 6px 20px rgba(232, 121, 249, 0.3);
+}
+
+.reset-button {
+    background-color: transparent;
+    color: var(--text);
+    border: 1px solid rgba(138, 92, 246, 0.2);
+}
+
+.reset-button:hover {
+    background-color: rgba(138, 92, 246, 0.1);
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: rgba(138, 92, 246, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 2rem;
+    display: none;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--primary);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.file-input {
+    display: none;
+}
+
+/* Footer Styles */
+.footer {
+    margin-top: auto;
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--subtext);
+    opacity: 0.7;
+    font-size: 0.875rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .conversion-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Toast notification */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary);
+    color: var(--text);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.toast.active {
+    transform: translateX(0);
+}
+
+.toast.error {
+    background-color: var(--error);
+}
+
+.found-a-bug a{
+text-decoration: none;
+color: var(--primary);
+}
+
+/* Medium devices (tablets, 768px and down) */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .converter-card {
+        margin-top: 1rem;
+        padding: 1.5rem;
+    }
+
+    .upload-area {
+        padding: 2rem 1rem;
+    }
+
+    .upload-text {
+        font-size: 1rem;
+    }
+
+    .upload-subtext {
+        font-size: 0.75rem;
+    }
+
+    .card-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .card-header p {
+        font-size: 0.9rem;
+    }
+
+    .conversion-options {
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .preview-image {
+        max-height: 200px;
+    }
+
+    .button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+    .converter-card {
+        padding: 1rem;
+        border-radius: 0.8rem;
+    }
+
+    .upload-area {
+        padding: 1.5rem 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .upload-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .image-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .detail-item {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .select-trigger {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .select-option {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .button {
+        margin-top: 1rem;
+    }
+
+    .completed-area h2 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .footer {
+        padding: 1rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Very small phones (360px and down) */
+@media (max-width: 360px) {
+    .card-header h1 {
+        font-size: 1.3rem;
+    }
+
+    .card-header p {
+        font-size: 0.8rem;
+    }
+
+    .button {
+        font-size: 0.8rem;
+    }
+
+    .preview-image {
+        max-height: 150px;
+    }
+}
+
+/* Add this to existing styles for base responsiveness */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.nav-links {
+    display: none; /* Hide nav links completely on mobile */
+}
+
+/* Add mobile menu toggle */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
+
+/* Hide mobile menu toggle by default */
+.mobile-menu-toggle {
+    display: none;
+}
+
+/* Show mobile menu and hide desktop nav on mobile */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .navbar .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--card);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar .nav-links.active {
+        display: flex;
+    }
+}
+
+/* Update native select */
+select {
+    background-color: var(--card) !important;
+    color: var(--text) !important;
+    border: 1px solid rgba(138, 92, 246, 0.2) !important;
+}
+
+select:hover {
+    border-color: var(--primary) !important;
+}
+
+select option {
+    background-color: var(--card);
+    color: var(--text);
+}
+
+/* Ensure nav-links are displayed properly on desktop */
+@media (min-width: 769px) {
+    .navbar .nav-links {
+        display: flex !important;
+        gap: 2rem;
+    }
+}

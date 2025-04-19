@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Convertr</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzhhNWNmNiI+PHBhdGggZD0iTTIgMTJjMC01LjUyIDQuNDgtMTAgMTAtMTBzMTAgNC40OCAxMCAxMGgtMS41YzAtNC42OS0zLjgxLTguNS04LjUtOC41UzMuNSA3LjMxIDMuNSAxMkg3bC01IDVsLTUtNUgyem0yMCAwYzAgNS41Mi00LjQ4IDEwLTEwIDEwUzIgMTcuNTIgMiAxMmgxLjVjMCA0LjY5IDMuODEgOC41IDguNSA4LjVzOC41LTMuODEgOC41LTguNWgtMy41bDUgNWw1LTVoLTMuNXoiLz48L3N2Zz4=">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/navbar.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#" class="logo">
+      <span>Convertr</span>
+    </a>
+    <button class="mobile-menu-toggle">☰</button>
+    <div class="nav-links">
+      <a href="#" class="nav-link">Home</a>
+      <a href="/pages/features.html" class="nav-link">Features</a>
+      <a href="/pages/Bugs.html" class="nav-link">Contact</a>
+      <a href="https://muaz.is-a.dev" class="nav-link muazweb" target="_blank">My Website</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="converter-card">
+      <div class="card-header">
+        <h1>Image File Converter</h1>
+        <p>Convert between JPEG, PNG, GIF, TIFF, BMP, and PDF easily</p>
+      </div>
+
+      <div class="upload-area" id="uploadArea">
+        <i class="upload-icon">📁</i>
+        <div class="upload-text">Drag & Drop your file here</div>
+        <div class="upload-subtext">or click to browse files</div>
+        <input type="file" id="fileInput" class="file-input" accept=".jpg,.jpeg,.png,.gif,.tiff,.tif,.bmp,.pdf,.jfif,.pjpeg,.pjp">
+      </div>
+
+      <div class="image-preview" id="imagePreview">
+        <img src="" alt="Preview" class="preview-image" id="previewImage">
+        <div class="image-details" id="imageDetails">
+          <!-- Image details will be added here -->
+        </div>
+      </div>
+
+      <div class="conversion-options" id="conversionOptions">
+        <div class="option-group">
+          <label class="option-label">Current Format</label>
+          <div class="custom-select">
+            <div class="select-trigger" id="currentFormatTrigger">
+              <span id="currentFormatText">Detecting...</span>
+              <span>▼</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="option-group">
+          <label class="option-label">Convert To</label>
+          <div class="custom-select">
+            <div class="select-trigger" id="targetFormatTrigger">
+              <span id="targetFormatText">Select format</span>
+              <span>▼</span>
+            </div>
+            <div class="select-options" id="targetFormatOptions">
+              <div class="select-option" data-value="jpeg">JPEG (.jpg)</div>
+              <div class="select-option" data-value="png">PNG (.png)</div>
+              <div class="select-option" data-value="gif">GIF (.gif)</div>
+              <div class="select-option" data-value="tiff">TIFF (.tiff)</div>
+              <div class="select-option" data-value="bmp">BMP (.bmp)</div>
+              <div class="select-option" data-value="pdf">PDF (.pdf)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-bar-container" id="progressBarContainer">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <button class="button" id="convertButton">
+        <span class="button-icon">🔄</span>
+        <span>Convert Image</span>
+      </button>
+
+      <div class="completed-area" id="completedArea">
+        <div class="completed-icon">✓</div>
+        <h2>Conversion Complete!</h2>
+        <div class="button-group">
+          <button class="button download-button" id="downloadButton">
+            <span class="button-icon">⬇️</span>
+            <span class="download-button-text">Download File</span>
+          </button>
+          <button class="button reset-button" id="resetButton">
+            <span>Convert Another File</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="found-a-bug">
+      <p>Found a bug? <a href="pages/Bugs.html">Report it</a></p>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast">Toast message here</div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Muaz's Image Convertr. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script>
+    // Initialize PDF.js worker
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+  </script>
+  <script src="index.js"></script>
+</body>
+</html>
