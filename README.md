@@ -112,4 +112,4 @@ Found a bug or have a suggestion? Visit the [Contact page](pages/Bugs.html) to r
 
 ---
 
-© 2025 Muaz's Image Convertr. All rights reserved. 
+© 2025 Muaz's Image Convertr. All rights reserved 
